@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require countdown/dest/jquery.countdown
+//= bootstrap-sass-official/javascripts/bootstrap
 //= require_tree .
