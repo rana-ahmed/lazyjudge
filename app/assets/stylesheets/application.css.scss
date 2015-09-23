@@ -15,3 +15,49 @@
  */
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
+
+
+.color-background, .panel-default > .panel-heading  {
+    background-color:#d2d6de
+}
+.navbar-default {
+    background-color:#3C8DBC
+}
+.navbar-default .navbar-brand {
+    color:#fff;
+    font-size:28px;
+    background-color:#244561
+}
+.navbar-default .navbar-brand:hover {
+    background-color:#244561;
+    color:#fff
+}
+.navbar-default .navbar-nav > li > a {
+    color:#FFF
+}
+.navbar-default .navbar-nav > li > a:hover {
+    background:rgba(0,0,0,0.1);
+    color:#f6f6f6
+}
+.btn {
+    border-radius:0
+}
+.form-control {
+    border-radius:0
+}
+.navbar-default .navbar-nav > li > .team-name {
+    margin-left:23px;
+    font-size:20px
+}
+.navbar-default .navbar-nav > li > .team-name:hover {
+    cursor:default;
+    background-color:#3C8DBC
+}
+.problem-list {
+    margin:5px 0 4px;
+    line-height:30px
+}
+.score-table-header{
+    width:70px;
+    text-align:center
+}

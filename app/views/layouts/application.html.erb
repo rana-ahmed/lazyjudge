@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Lezyjudge</title>
+  <title>Lezyjudge <%= yield(:title) || 'Lezyjudge' %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+          <div class="navbar-header">
+              <button class="navbar-toggle collapsed" data-target="#navbar"
+              data-toggle="collapse" type="button">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              </button>
+              <%= link_to(root_path, class: "navbar-brand white-font") do %>
+                <b>Lazy</b>Judge
+              <% end %>
+              <!--
+              <a class="navbar-brand white-font"href="#">
+                  <b>Lazy</b>Judge
+              </a>
+            -->
+          </div>
+
+          <div class="navbar-collapse collapse" id="navbar">
+              <ul class="nav navbar-nav navbar-right">
+                  <li>
+                      <a href="#"><strong>Score board</strong></a>
+                  </li>
+              </ul>
+          </div><!--/.nav-collapse -->
+      </div>
+  </nav>
 
 <%= yield %>
 
