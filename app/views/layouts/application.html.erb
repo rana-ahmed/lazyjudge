@@ -31,7 +31,9 @@
           <div class="navbar-collapse collapse" id="navbar">
               <ul class="nav navbar-nav navbar-right">
                   <li>
-                      <a href="#"><strong>Score board</strong></a>
+                      <%= link_to score_board_path do %>
+                        <strong>Score board</strong>
+                      <% end %>
                   </li>
               </ul>
           </div><!--/.nav-collapse -->

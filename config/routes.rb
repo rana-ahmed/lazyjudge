@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
+  get 'score_board' => 'home#score_board'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
