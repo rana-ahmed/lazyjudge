@@ -1,0 +1,81 @@
+<div class="container" style="margin-top: 68px;">
+  <div class="row">
+    <div class="col-md-7 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Add User</h3>
+        </div>
+        <%= simple_form_for [:admin, @user] do |f| %>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>User name</th>
+                <th>Password</th>
+                <th>Role</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td>
+                  <%= f.error :user_name %>
+                </td>
+                <td>
+                  <%= f.error :password_digest %>
+                </td>
+                <td>
+                  <%= f.error :role %>
+                </td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <%= f.input_field :user_name %>
+                </td>
+                <td>
+                  <%= f.input_field :password_digest %>
+                </td>
+                <td>
+                  <%= f.input_field :role, as: :select, collection: User.roles.keys.to_a, selected: 0,
+                  class: "form-control", style: "height: 31px;" %>
+                </td>
+                <td>
+                  <%= f.button :submit, "Add", class: "btn btn-success", style: "width: 76px;" %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+      <div class="panel panel-default" <%= "visibility: hidden" unless @users.first %>>
+        <div class="panel-heading">
+          <h3 class="panel-title">User List</h3>
+        </div>
+        <table class="table table-striped user-table">
+          <thead>
+            <tr>
+              <th>User name</th>
+              <th>Role</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+            <tr>
+              <td style="font-size: 18px;">
+                <%= user.user_name %>
+              </td>
+              <td style="font-size: 18px;">
+                <%= user.role.capitalize %>
+              </td>
+              <td>
+                <%= button_to "Delete", {action: :destroy, id: user.id}, method: :delete, class:"btn btn-danger" %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
