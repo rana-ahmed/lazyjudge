@@ -34,7 +34,7 @@
           </table>
         </form>
       </div>
-      <div class="panel panel-default">
+      <div class="panel panel-default" <%= "visibility: hidden" unless @users.first %>>
         <div class="panel-heading">
           <h3 class="panel-title">User List</h3>
         </div>
@@ -56,7 +56,7 @@
                 <%= user.role %>
               </td>
               <td>
-                <button class="btn btn-danger">Delete</button>
+                <%= button_to "Delete", {action: :destroy, id: user.id}, method: :delete, class:"btn btn-danger" %>
               </td>
             </tr>
             <% end %>

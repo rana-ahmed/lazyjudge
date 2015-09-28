@@ -7,7 +7,8 @@ class Admin::UserController < ApplicationController
 
   end
 
-  def delete
-
+  def destroy
+    User.find(params[:id]).destroy
+    redirect_to admin_user_index_path
   end
 end
