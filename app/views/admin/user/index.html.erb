@@ -47,36 +47,22 @@
             </tr>
           </thead>
           <tbody>
+            <% @users.each do |user| %>
             <tr>
-              <td>rana</td>
-              <td>admin</td>
+              <td>
+                <%= user.user_name %>
+              </td>
+              <td>
+                <%= user.role %>
+              </td>
               <td>
                 <button class="btn btn-danger">Delete</button>
               </td>
             </tr>
-            <tr>
-              <td>misbah</td>
-              <td>judge</td>
-              <td>
-                <button class="btn btn-danger">Delete</button>
-              </td>
-            </tr>
-            <tr>
-              <td>cse-122</td>
-              <td>team</td>
-              <td>
-                <button class="btn btn-danger">Delete</button>
-              </td>
-            </tr>
-            <tr>
-              <td>denger</td>
-              <td>team</td>
-              <td>
-                <button class="btn btn-danger">Delete</button>
-              </td>
-            </tr>
+            <% end %>
           </tbody>
         </table>
+        <%= console %>
       </div>
     </div>
   </div>

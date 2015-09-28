@@ -1,10 +1,6 @@
 class Admin::UserController < ApplicationController
   def index
-
-  end
-
-  def new
-    render :index
+    @users = User.all
   end
 
   def create
