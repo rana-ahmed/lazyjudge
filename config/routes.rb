@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'score_board' => 'home#score_board'
 
   namespace :admin do
-    resources :user, only:[:index, :new, :create, :delete]
+    resources :user, only:[:index, :create, :delete]
   end
 
   # Example of regular route:
