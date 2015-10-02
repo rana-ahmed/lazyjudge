@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.order(:role).all
+    @users = User.order(:role, user_name: :asc).all
     @user = User.new
   end
 
@@ -9,7 +9,7 @@ class Admin::UsersController < ApplicationController
     if @user.save
       redirect_to admin_users_path
     else
-      @users = User.order(:role).all
+      @users = User.order(:role, user_name: :asc).all
       render :index
     end
   end
