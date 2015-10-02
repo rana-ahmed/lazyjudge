@@ -19,7 +19,7 @@
                   <%= f.error :user_name %>
                 </td>
                 <td>
-                  <%= f.error :password_digest %>
+                  <%= f.error :password %>
                 </td>
                 <td>
                   <%= f.error :role %>
@@ -33,7 +33,7 @@
                   <%= f.input_field :user_name %>
                 </td>
                 <td>
-                  <%= f.input_field :password_digest %>
+                  <%= f.input_field :password %>
                 </td>
                 <td>
                   <%= f.input_field :role, as: :select, collection: User.roles.keys.to_a, selected: 0,
