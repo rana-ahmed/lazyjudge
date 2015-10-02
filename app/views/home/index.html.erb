@@ -11,18 +11,18 @@
                 <br>
             </div>
 
-            <form style="background:white;margin-top:17px">
+            <%= simple_form_for(:user, url: sessions_path, method: :post, html: { style: "background:white;margin-top:17px" }) do |f| %>
                 <div class="form-group">
                     <label for="exampleInputEmail1">User name</label>
-                    <input class="form-control" placeholder="User name" type="text">
+                    <%= f.input_field :user_name, class: "form-control", placeholder: "User name" %>
                 </div>
 
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input class="form-control" placeholder="Password" type="password">
+                    <%= f.input_field :password, class: "form-control", placeholder: "Password" %>
                 </div>
-                <button class="btn btn-primary" type="submit">__Login__</button>
-            </form>
+                <%= f.button :submit, "__Login__", class:"btn btn-primary" %>
+            <% end %>
         </div>
     </div>
 </div>
