@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   root 'home#index'
   get 'score_board' => 'home#score_board'
+  resources :sessions, only: [:create, :destroy]
 
   namespace :admin do
-    resources :users, only:[:index, :create, :destroy]
+    resources :users, only: [:index, :create, :destroy]
   end
 
   # Example of regular route:
