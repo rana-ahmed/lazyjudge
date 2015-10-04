@@ -1,4 +1,6 @@
 class Problem::ProblemsController < ApplicationController
+  before_action :set_problem, only: [:show]
+
   def new
     @problem = Problem.new
   end
@@ -13,7 +15,15 @@ class Problem::ProblemsController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
   private
+  def set_problem
+    @problem = Problem.find(params[:id])
+  end
+
   def problem_params
     params.require(:problem).permit(:title, :time_limit, :memory_limit, :description,
     :input_description, :output_description, :sample_input, :sample_output, :judge_input,

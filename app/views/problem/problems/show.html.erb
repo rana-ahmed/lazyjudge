@@ -1,0 +1,78 @@
+<div class="container" style="margin-top: 97px;">
+  <div class="row">
+    <div class="col-md-9 col-md-offset-2">
+      <div class="panel panel-default panel-problem">
+        <div class="panel-body" style="position: relative;">
+          <div class="h1"><%= @problem.title %></div><br>
+
+          <p class="small">CPU: <%= @problem.time_limit %><br>
+            Memory: <%= @problem.memory_limit %>MB</p><br>
+          <p><%= simple_format @problem.description %></p><br>
+          <h3>Input Specification</h3>
+          <p><%= simple_format @problem.input_description %></p><br>
+          <h3>Output Specification</h3>
+          <p><%= simple_format @problem.output_description %></p><br>
+          <h3>Sample</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Input</th>
+                <th>Output</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= simple_format @problem.sample_input %></td>
+                <td><%= simple_format @problem.sample_output %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!--Warning Warning Warning Warning Warning Warning Warning Warning
+              *****This is Admin only part*****
+      -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Admin Actions</h3>
+        </div>
+        <div style="padding:10px;">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#judge-io-modal">
+            Judge I/O
+          </button>
+          <button type="button" class="btn btn-warning">Edit</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="judge-io-modal" tabindex="-1" role="dialog" aria-labelledby="judge-io-modalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="judge-io-modalLabel">Judge I/O</h4>
+              </div>
+              <div class="modal-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Input</th>
+                      <th>Output</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><%= simple_format @problem.judge_input %></td>
+                      <td><%= simple_format @problem.judge_output %></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal END -->
+      </div>
+      <!-- Admin part END -->
+    </div>
+  </div>
+</div>
