@@ -1,5 +1,5 @@
 class Problem::ProblemsController < ApplicationController
-  before_action :set_problem, only: [:show, :destroy, :edit]
+  before_action :set_problem, only: [:show, :destroy, :edit, :update]
 
   def index
     @problems = Problem.all
@@ -25,6 +25,14 @@ class Problem::ProblemsController < ApplicationController
 
   def edit
 
+  end
+
+  def update
+    if @problem.update(problem_params)
+      redirect_to @problem, notice: "Problem updated"
+    else
+      render :edit
+    end
   end
 
   def destroy
