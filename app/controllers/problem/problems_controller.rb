@@ -1,6 +1,10 @@
 class Problem::ProblemsController < ApplicationController
   before_action :set_problem, only: [:show]
 
+  def index
+    @problems = Problem.all
+  end
+
   def new
     @problem = Problem.new
   end

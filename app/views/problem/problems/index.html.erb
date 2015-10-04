@@ -1,0 +1,19 @@
+<div class="container" style="margin-top: 97px;">
+  <div class="row">
+    <div class="col-md-7 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Problems</h3>
+        </div>
+
+        <div class="list-group">
+          <% @problems.each do |problem| %>
+            <%= link_to(problem, class: "list-group-item", style: "position: relative;") do %>
+              <h4 class="list-group-item-heading problem-list"><%= problem.title %></h4>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
