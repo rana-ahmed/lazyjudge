@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923092148) do
+ActiveRecord::Schema.define(version: 20151004065800) do
+
+  create_table "problems", force: :cascade do |t|
+    t.string   "title"
+    t.string   "time_limit",         default: "1s"
+    t.string   "memory_limit",       default: "1024"
+    t.text     "description"
+    t.text     "input_description",  default: "n/a"
+    t.text     "output_description", default: "n/a"
+    t.text     "sample_input",       default: "n/a"
+    t.text     "sample_output",      default: "n/a"
+    t.text     "judge_input",        default: ""
+    t.text     "judge_output",       default: ""
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "user_name"
