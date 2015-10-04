@@ -1,5 +1,5 @@
 class Problem::ProblemsController < ApplicationController
-  before_action :set_problem, only: [:show, :destroy]
+  before_action :set_problem, only: [:show, :destroy, :edit]
 
   def index
     @problems = Problem.all
@@ -20,6 +20,10 @@ class Problem::ProblemsController < ApplicationController
   end
 
   def show
+
+  end
+
+  def edit
 
   end
 
