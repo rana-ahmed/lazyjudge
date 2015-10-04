@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require countdown/dest/jquery.countdown
 //= require bootstrap-sass-official/assets/javascripts/bootstrap
+//= require bootstrap-wysihtml5
 //= require_tree .
