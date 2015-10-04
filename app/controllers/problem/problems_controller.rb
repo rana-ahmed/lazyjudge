@@ -1,5 +1,5 @@
 class Problem::ProblemsController < ApplicationController
-  before_action :set_problem, only: [:show]
+  before_action :set_problem, only: [:show, :destroy]
 
   def index
     @problems = Problem.all
@@ -21,6 +21,11 @@ class Problem::ProblemsController < ApplicationController
 
   def show
 
+  end
+
+  def destroy
+    @problem.delete
+    redirect_to problems_path
   end
 
   private

@@ -41,7 +41,9 @@
             Judge I/O
           </button>
           <button type="button" class="btn btn-warning">Edit</button>
-          <button type="button" class="btn btn-danger">Delete</button>
+          <%= button_to "Delete", {action: :destroy, id: @problem.id}, method: :delete,
+          data: { confirm: 'Are you sure?' }, 
+          class:"btn btn-danger", style: "width: 139px;margin-top: 5px;" %>
         </div>
 
         <!-- Modal -->
