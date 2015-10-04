@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'score_board' => 'home#score_board'
   resources :sessions, only: [:create, :destroy]
 
+  resources :problems, controller: 'problem/problems'
+
   namespace :admin do
     resources :users, only: [:index, :create, :destroy]
   end
