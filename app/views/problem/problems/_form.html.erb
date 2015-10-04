@@ -1,0 +1,21 @@
+<%= simple_form_for(@problem, html: { style: "padding:11px;" }) do |f| %>
+  <%= f.error_notification %>
+  <ol class="breadcrumb" style="background-color: #27ae60;font-size: 15px;">
+    <li class="active" style="color:black;"><strong>General part</strong></li>
+  </ol>
+  <%= f.input :title %>
+  <%= f.input :description, as: :wysihtml5 %>
+  <%= f.input :input_description, as: :wysihtml5 %>
+  <%= f.input :output_description, as: :wysihtml5 %>
+  <%= f.input :sample_input %>
+  <%= f.input :sample_output %>
+
+  <ol class="breadcrumb" style="background-color: #27ae60;font-size: 15px;">
+    <li class="active" style="color:black;"><strong>Judge part</strong></li>
+  </ol>
+  <%= f.input :judge_input %>
+  <%= f.input :judge_output %>
+  <%= f.input :time_limit %>
+  <%= f.input :memory_limit %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
