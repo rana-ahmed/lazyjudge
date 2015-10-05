@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :clarifications, dependent: :destroy
   has_secure_password
   validates :user_name, :password, presence: true
   validates :user_name, length: {in: 4..10}
