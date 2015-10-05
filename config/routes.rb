@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   root "home#index"
 
   get 'score_board' => 'home#score_board'
-  resources :sessions, only: [:create, :destroy]
+  resources :sessions, only: [:create]
+  delete 'session' => 'sessions#destroy'
 
   resources :problems, controller: 'problem/problems'
 
