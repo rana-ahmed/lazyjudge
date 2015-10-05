@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+  before_filter :login_required
+
   def index
     @users = User.order(:role, user_name: :asc).all
     @user = User.new

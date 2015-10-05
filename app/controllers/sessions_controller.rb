@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_filter :login_required, only: [:destroy]
+
   def create
     user = User.find_by_user_name(user_parms[:user_name])
     if user && user.authenticate(user_parms[:password])
@@ -15,15 +17,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    if current_user
-      session[:user_id] = nil
-      session[:user_type] = nil
-      redirect_to root_url, notice: "Logged out!"
-    else
-      flash[:notice] = "Logged in first"
-      flash[:type] = "alert-warning"
-      redirect_to root_url
-    end
+    session[:user_id] = nil
+    session[:user_type] = nil
+    redirect_to root_url, notice: "Logged out!"
   end
 
   private
