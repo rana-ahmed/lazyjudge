@@ -3,9 +3,9 @@ class SessionsController < ApplicationController
     user = User.find_by_user_name(user_parms[:user_name])
     if user && user.authenticate(user_parms[:password])
       session[:user_id] = user.id
+      session[:user_type] = user.role
       flash[:notice] = "Logged in!"
       flash[:type] = "alert-success"
-      #here we will call current_user_root
       redirect_to root_url
     else
       flash[:notice] = "User name or password invalid"
@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
   def destroy
     if current_user
       session[:user_id] = nil
+      session[:user_type] = nil
       redirect_to root_url, notice: "Logged out!"
     else
       flash[:notice] = "Logged in first"
