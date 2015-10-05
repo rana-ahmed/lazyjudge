@@ -1,0 +1,26 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" data-target="#navbar"
+            data-toggle="collapse" type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <%= link_to(root_path, class: "navbar-brand white-font") do %>
+              <b>Lazy</b>Judge
+            <% end %>
+        </div>
+
+        <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <%= link_to score_board_path do %>
+                      <strong>Score board</strong>
+                    <% end %>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>

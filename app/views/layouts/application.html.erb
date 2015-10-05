@@ -8,32 +8,12 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-          <div class="navbar-header">
-              <button class="navbar-toggle collapsed" data-target="#navbar"
-              data-toggle="collapse" type="button">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              </button>
-              <%= link_to(root_path, class: "navbar-brand white-font") do %>
-                <b>Lazy</b>Judge
-              <% end %>
-          </div>
-
-          <div class="navbar-collapse collapse" id="navbar">
-              <ul class="nav navbar-nav navbar-right">
-                  <li>
-                      <%= link_to score_board_path do %>
-                        <strong>Score board</strong>
-                      <% end %>
-                  </li>
-              </ul>
-          </div><!--/.nav-collapse -->
-      </div>
-  </nav>
+  <%= render 'layouts/nav/visitor_nav' if !current_user %>
+  <% if current_user %>
+    <%= render 'layouts/nav/team_nav' if current_user.team? %>
+    <%= render 'layouts/nav/judge_nav' if current_user.judge? %>
+    <%= render 'layouts/nav/admin_nav' if current_user.admin? %>
+  <% end %>
 
   <% if flash[:notice] %>
   <div class="alert <%= flash[:type] ||= "alert-info" %> alert-dismissible" role="alert" style="margin-top:50px;">
