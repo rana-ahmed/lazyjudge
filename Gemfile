@@ -13,6 +13,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'bower-rails'
 gem 'simple_form'
 gem 'bootstrap-wysihtml5-rails'
+gem 'cancancan', '~> 1.10'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
