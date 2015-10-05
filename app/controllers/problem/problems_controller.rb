@@ -1,6 +1,7 @@
 class Problem::ProblemsController < ApplicationController
   before_action :set_problem, only: [:show, :destroy, :edit, :update]
   before_filter :login_required
+  load_and_authorize_resource
 
   def index
     @problems = Problem.all
