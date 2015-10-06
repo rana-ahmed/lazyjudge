@@ -14,6 +14,7 @@ gem 'bower-rails'
 gem 'simple_form'
 gem 'bootstrap-wysihtml5-rails'
 gem 'cancancan', '~> 1.10'
+gem "rails-settings-cached", "~> 0.4.0"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
