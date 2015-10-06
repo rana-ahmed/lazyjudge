@@ -1,2 +1,3 @@
 asset 'bootstrap-sass-official'
-asset 'countdown'
+asset 'jquery.countdown'
+asset 'moment-timezone'

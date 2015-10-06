@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require countdown/dest/jquery.countdown
+//= require jquery.countdown/dist/jquery.countdown
 //= require bootstrap-sass-official/assets/javascripts/bootstrap
+//= require moment/moment
+//= require moment-timezone/builds/moment-timezone-with-data
 //= require bootstrap-wysihtml5
 //= require_tree .
