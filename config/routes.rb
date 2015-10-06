@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :create, :destroy]
     get 'contest' => 'contest#index'
+    post 'setting' => 'contest#setting'
   end
 
   # Example of regular route:

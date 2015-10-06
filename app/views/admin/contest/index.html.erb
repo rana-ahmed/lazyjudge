@@ -32,14 +32,20 @@
           <div class="col-md-6">
             <div style="padding: 10px;">
               <h4>Contest settings</h4>
+              <% if flash[:setting_error] %>
+              <strong style="color: red">Setting error:</strong>
+              <div class="text-warning" style="margin-left: 8px">
+                <%= simple_format flash[:setting_error] %>
+              </div>
+              <% end %>
               <ol class="breadcrumb">
-                <li class="active"><strong>Contest duration: </strong><%= @settings_info[:duration] %></li>
+                <li class="active"><strong>Contest duration: </strong><%= Setting.contest_duration || 0 %> minute</li>
               </ol>
               <ol class="breadcrumb">
-                <li class="active"><strong>C language compiler: </strong><%= @settings_info[:c_com] %></li>
+                <li class="active"><strong>C compiler: </strong><%= Setting.contest_c_com || "not set" %></li>
               </ol>
               <ol class="breadcrumb">
-                <li class="active"><strong>C++ language compiler: </strong><%= @settings_info[:cpp_com] %></li>
+                <li class="active"><strong>C++ compiler: </strong><%= Setting.contest_cpp_com || "not set" %></li>
               </ol>
               <a data-toggle="modal" href="#settings-form">Change settings</a>
             </div>
@@ -56,10 +62,15 @@
 
     <div class="modal-content">
       <div class="modal-body" style="padding:40px 50px;">
-        <div class="form-group">
-            <label for="usrname"></span>Contest duration(in minute)</label>
-            <input type="text" class="form-control" id="usrname" placeholder="contest duration in minute">
-        </div>
+        <%= simple_form_for :setting, url: admin_setting_path, mathod: :post do |f| %>
+          <%= f.input :duration, label: "Contest Duration(in minute)",
+          as: :integer, input_html: { value: Setting.contest_duration || 0 } %>
+          <%= f.input :c_com, label: "C compiler url",
+          as: :url, input_html: { value: Setting.contest_c_com || 'not set' } %>
+          <%= f.input :cpp_com, label: "C++ compiler url",
+          as: :url, input_html: { value: Setting.contest_cpp_com || 'not set', required: true } %>
+          <%= f.submit 'Save' %>
+        <% end %>
       </div>
     </div>
   </div>
