@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   scope :constraints => lambda{ |req| req.session[:user_type] == "admin" } do
-    match '/', to: "admin/users#index", via: :get
+    match '/', to: "admin/contest#index", via: :get
   end
   scope :constraints => lambda{ |req| %w(team judge).include? req.session[:user_type] } do
     match '/', to: "problem/problems#index", via: :get
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   get 'score_board' => 'home#score_board'
-  
+
   post 'sessions' => 'sessions#create'
   delete 'session' => 'sessions#destroy'
 
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index, :create, :destroy]
+    get 'contest' => 'contest#index'
   end
 
   # Example of regular route:

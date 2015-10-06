@@ -1,0 +1,66 @@
+<div class="container" style="margin-top: 60px;">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <button type="button" class="btn btn-primary" style="margin-bottom: 15px;
+      height: 52px;"><strong>Start Contest</strong></button>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Contest summary</h3>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div style="padding: 10px;">
+              <ul class="list-group">
+                <li class="list-group-item"><span class="badge"><%= @user_info[:user_number] %></span>Total number of user</li>
+                <li class="list-group-item"><span class="badge"><%= @user_info[:admin_number] %></span>Number of admin</li>
+                <li class="list-group-item"><span class="badge"><%= @user_info[:judge_number] %></span>Number of judge</li>
+                <li class="list-group-item"><span class="badge"><%= @user_info[:team_number] %></span>Number of team</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div style="padding: 10px;">
+              <ul class="list-group">
+                <li class="list-group-item"><span class="badge"><%= @problem_info[:problem_number] %></span>Total number of problem</li>
+                <li class="list-group-item"><span class="badge"><%= @problem_info[:submission_number] %></span>Total number of submission</li>
+                <li class="list-group-item"><span class="badge"><%= @problem_info[:clarification_number] %></span>Total number of clarification</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div style="padding: 10px;">
+              <h4>Contest settings</h4>
+              <ol class="breadcrumb">
+                <li class="active"><strong>Contest duration: </strong><%= @settings_info[:duration] %></li>
+              </ol>
+              <ol class="breadcrumb">
+                <li class="active"><strong>C language compiler: </strong><%= @settings_info[:c_com] %></li>
+              </ol>
+              <ol class="breadcrumb">
+                <li class="active"><strong>C++ language compiler: </strong><%= @settings_info[:cpp_com] %></li>
+              </ol>
+              <a data-toggle="modal" href="#settings-form">Change settings</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="settings-form" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-body" style="padding:40px 50px;">
+        <div class="form-group">
+            <label for="usrname"></span>Contest duration(in minute)</label>
+            <input type="text" class="form-control" id="usrname" placeholder="contest duration in minute">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
