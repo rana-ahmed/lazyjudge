@@ -19,12 +19,11 @@
             <strong><%= current_user.user_name %></strong>
           <% end %>
         </li>
-
-        <li>
-          <a href="#">
-            --<strong>3:00 Hours left</strong>--
-          </a>
-        </li>
+        <% if Setting.contest_timer_stop.nil? %>
+          <li><a href="#"><strong>----</strong></a></li>
+        <% else %>
+          <li><a href="#"><strong><span id="timer"></span> <span id="clock"></span></strong></a></li>
+        <% end %>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

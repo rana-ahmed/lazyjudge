@@ -1,15 +1,37 @@
 class Admin::ContestController < ApplicationController
   before_action :set_info, only: :index
   before_action :validates_setting, only: :setting
-  def index
 
+  def index
+    authorize! :index, 'admin/contest'
   end
 
   def setting
+    authorize! :setting, 'admin/contest'
     Setting.contest_duration = params[:setting][:duration]
     Setting.contest_c_com = params[:setting][:c_com]
     Setting.contest_cpp_com = params[:setting][:cpp_com]
     redirect_to admin_contest_path
+  end
+
+  def contest_start
+    authorize! :contest_start, 'admin/contest'
+    if Setting.contest_duration.nil?
+      redirect_to :back, notice: "Set contest duration first"
+    else
+      Setting.contest_running = true
+      Setting.contest_timer_start = Time.now
+      Setting.contest_timer_stop = Time.now + Setting.contest_duration.to_i.minutes
+      redirect_to :back, notice: "Contest successfully started"
+    end
+  end
+
+  def contest_stop
+    authorize! :contest_stop, 'admin/contest'
+    Setting.contest_running = nil
+    Setting.contest_timer_start = nil
+    Setting.contest_timer_stop = nil
+    redirect_to :back, notice: "Contest successfully stopped"
   end
 
   private

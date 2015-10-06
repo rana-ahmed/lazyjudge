@@ -1,8 +1,15 @@
 <div class="container" style="margin-top: 60px;">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <button type="button" class="btn btn-primary" style="margin-bottom: 15px;
-      height: 52px;"><strong>Start Contest</strong></button>
+
+      <% if Setting.contest_timer_stop.nil? %>
+        <%= button_to "Start Contest", {controller: 'admin/contest', action: :contest_start}, method: :post,
+        class:"btn btn-primary", style: "margin-bottom: 15px;height: 52px;" %>
+      <% else %>
+        <%= button_to "Stop Contest", {controller: 'admin/contest', action: :contest_stop}, method: :post,
+        class:"btn btn-primary", style: "margin-bottom: 15px;height: 52px;" %>
+      <% end %>
+
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Contest summary</h3>

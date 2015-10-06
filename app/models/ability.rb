@@ -6,6 +6,7 @@ class Ability
       if user.admin?
         can :manage, User
         can :manage, Problem
+        can :manage, 'admin/contest'
         can [:read, :destroy], Clarification
       elsif user.judge?
         can :read, Problem
