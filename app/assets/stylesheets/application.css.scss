@@ -62,3 +62,10 @@
     width:70px;
     text-align:center
 }
+.panel{
+    border-radius: 0px;
+}
+.panel-heading{
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}

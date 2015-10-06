@@ -6,13 +6,16 @@ Rails.application.routes.draw do
   scope :constraints => lambda{ |req| %w(team judge).include? req.session[:user_type] } do
     match '/', to: "problem/problems#index", via: :get
   end
+
   root "home#index"
 
   get 'score_board' => 'home#score_board'
-  resources :sessions, only: [:create]
+  
+  post 'sessions' => 'sessions#create'
   delete 'session' => 'sessions#destroy'
 
   resources :problems, controller: 'problem/problems'
+  resources :clarifications, controller: 'problem/clarifications', except: :show
 
   namespace :admin do
     resources :users, only: [:index, :create, :destroy]

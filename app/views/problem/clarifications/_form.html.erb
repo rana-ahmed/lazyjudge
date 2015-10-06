@@ -1,0 +1,12 @@
+<%= simple_form_for(@clarification, html: { style: "padding:11px;" }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.association :problem, include_blank: false if current_user.team? %>
+  <%= f.input :question, input_html: { style: "height: 112px;" } if current_user.team? %>
+
+  <%= f.input :question, input_html: { style: "height: 112px;", readonly: true } if current_user.judge? %>
+  <%= f.input :answer, input_html: { style: "height: 112px;" } if current_user.judge? %>
+  <%= f.input_field :judge_id, value: current_user.id, type: "hidden" if current_user.judge? %>
+
+  <%= f.button :submit, "Ask Clarification" , class: "btn btn-primary" if current_user.team? %>
+  <%= f.button :submit, "Answer Clarification" , class: "btn btn-primary" if current_user.judge? %>
+<% end %>

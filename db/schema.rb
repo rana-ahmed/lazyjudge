@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 20151005193453) do
     t.integer  "problem_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+ActiveRecord::Schema.define(version: 20151005204429) do
+
+  create_table "clarifications", force: :cascade do |t|
+    t.text     "question"
+    t.text     "answer",     default: "<Not answered, yet>"
+    t.integer  "user_id"
+    t.integer  "problem_id"
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.integer  "judge_id"
   end
 
