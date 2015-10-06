@@ -1,0 +1,45 @@
+<div class="container" style="margin-top: 68px;">
+  <div class="row">
+    <div class="col-md-7 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Clarification</h3>
+        </div>
+        <% if can? :create, Clarification %>
+        <%= link_to "Ask your clarification", new_clarification_path, style: "padding:13px;font-size:20px;" %>
+        <% end %>
+        <div class="list-group">
+          <% @clarifications.each do |clarification| %>
+          <a href="#<%= "#{clarification.id}#{clarification.user.user_name}" %>" class="list-group-item" data-toggle="modal">
+            <p>Asked by: <%= clarification.user.user_name %></p>
+            <h4 class="list-group-item-heading"><%= clarification.problem.title %></h4>
+            <p><%= clarification.question[0...86] %></p>
+          </a>
+          <div class="modal fade" id="<%= "#{clarification.id}#{clarification.user.user_name}" %>" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <h4>Question:</h4>
+                  <p><%= clarification.question %></p>
+                  <h4>Answer:</h4>
+                  <p><%= clarification.answer %></p>
+
+                  <% if can? :update, clarification %>
+                  <%= button_to "Answer Question", {action: :edit, id: clarification.id}, method: :get,
+                  class:"btn btn-primary", style: "width: 139px;margin-top: 5px;" %>
+                  <% end %>
+                  <% if can? :destroy, clarification %>
+                  <%= button_to "Delete", {action: :destroy, id: clarification.id}, method: :delete,
+                  data: { confirm: 'Are you sure?' },
+                  class:"btn btn-danger", style: "width: 139px;margin-top: 5px;" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

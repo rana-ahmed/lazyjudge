@@ -1,0 +1,2 @@
+module Problem::ClarificationsHelper
+end
