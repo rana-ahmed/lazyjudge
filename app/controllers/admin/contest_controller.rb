@@ -12,6 +12,22 @@ class Admin::ContestController < ApplicationController
     redirect_to admin_contest_path
   end
 
+  def contest_start
+    if Setting.contest_duration.nil?
+      redirect_to :back, notice: "Set contest duration first"
+    else
+      Setting.contest_timer_start = Time.now
+      Setting.contest_timer_stop = Time.now + Setting.contest_duration.to_i.minutes
+      redirect_to :back, notice: "Contest successfully started"
+    end
+  end
+
+  def contest_stop
+    Setting.contest_timer_start = nil
+    Setting.contest_timer_stop = nil
+    redirect_to :back, notice: "Contest successfully stopped"
+  end
+
   private
   def validates_setting
     message = ""

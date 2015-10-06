@@ -20,11 +20,11 @@
           <% end %>
         </li>
 
-        <li>
-          <a href="#">
-            --<strong>3:00 Hours left</strong>--
-          </a>
-        </li>
+        <% if Setting.contest_timer_stop.nil? %>
+          <li><a href="#"><strong>----</strong></a></li>
+        <% else %>
+          <li id="timer"><a href="#"><strong>Time left <span id="clock"></span></strong></a></li>
+        <% end %>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

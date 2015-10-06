@@ -26,5 +26,19 @@
 
 <%= yield %>
 
+<% if !Setting.contest_timer_stop.nil? %>
+<script type="text/javascript">
+  var cotestEndTime = moment.tz("<%= Setting.contest_timer_stop.strftime('%Y-%m-%d %H:%M') %>", "Asia/Dhaka").toDate();
+  $('#clock').countdown(cotestEndTime)
+    .on('update.countdown', function(event) {
+      var format = '%H:%M:%S';
+      $(this).html(event.strftime(format));
+    })
+    .on('finish.countdown', function(event) {
+      $('#timer').html('THE END');
+    });
+</script>
+<% end %>
+
 </body>
 </html>

@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :create, :destroy]
     get 'contest' => 'contest#index'
     post 'setting' => 'contest#setting'
+    post 'contest_start' => 'contest#contest_start'
+    post 'contest_stop' => 'contest#contest_stop'
   end
 
   # Example of regular route:
