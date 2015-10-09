@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006174351) do
+ActiveRecord::Schema.define(version: 20151009062155) do
 
   create_table "clarifications", force: :cascade do |t|
     t.text     "question"
@@ -51,6 +51,21 @@ ActiveRecord::Schema.define(version: 20151006174351) do
   end
 
   add_index "settings", ["thing_type", "thing_id", "var"], name: "index_settings_on_thing_type_and_thing_id_and_var", unique: true
+
+  create_table "submissions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "problem_id"
+    t.text     "code"
+    t.integer  "language"
+    t.integer  "point",      default: 0
+    t.integer  "result",     default: 0
+    t.string   "reference"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "submissions", ["problem_id"], name: "index_submissions_on_problem_id"
+  add_index "submissions", ["user_id"], name: "index_submissions_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "user_name"
