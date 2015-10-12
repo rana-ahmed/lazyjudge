@@ -17,4 +17,5 @@
 //= require moment/moment
 //= require moment-timezone/builds/moment-timezone-with-data
 //= require bootstrap-wysihtml5
+//= require clipboard/dist/clipboard
 //= require_tree .
