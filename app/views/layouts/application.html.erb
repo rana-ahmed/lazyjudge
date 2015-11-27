@@ -31,7 +31,7 @@
   var cotestEndTime = moment.tz("<%= Setting.contest_timer_stop.strftime('%Y-%m-%d %H:%M') %>", "Asia/Dhaka").toDate();
   $('#clock').countdown(cotestEndTime, {elapse: true})
     .on('update.countdown', function(event) {
-      var format = '%H:%M:%S';
+      var format = '%H:%M';
       var $this = $(this);
       if (event.elapsed) {//After countdown end
         $('#timer').html('Extra time ');

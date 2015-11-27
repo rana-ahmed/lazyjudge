@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   delete 'session' => 'sessions#destroy'
 
   resources :problems, controller: 'problem/problems'
-  resources :clarifications, controller: 'problem/clarifications', except: :show
+  resources :submissions, controller: 'problem/submissions', except: :show
+  resources :clarifications, controller: 'problem/clarifications', except: [:show, :destroy]
 
   namespace :admin do
     resources :users, only: [:index, :create, :destroy]

@@ -1,0 +1,7 @@
+<%= simple_form_for(@submission, html: {style: "padding:11px;"}) do |f| %>
+  <%= f.association :problem, include_blank: false %>
+  <%= f.input :language, as: :radio_buttons, collection: Submission.languages.keys.to_a,
+  checked: Submission.languages.first %>
+  <%= f.input :code, input_html: { style: "height: 271px; width: 726px;" } %>
+  <%= f.button :submit, "Submit", class: "btn btn-success" %>
+<% end %>
