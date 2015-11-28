@@ -29,7 +29,6 @@ class Admin::ContestController < ApplicationController
   def contest_stop
     authorize! :contest_stop, 'admin/contest'
     Setting.contest_running = nil
-    Setting.contest_timer_start = nil
     Setting.contest_timer_stop = nil
     redirect_to :back, notice: "Contest successfully stopped"
   end

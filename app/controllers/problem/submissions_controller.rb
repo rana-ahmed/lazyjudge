@@ -1,4 +1,6 @@
 class Problem::SubmissionsController < ApplicationController
+  require "#{Rails.root}/lib/judging"
+
   before_filter :login_required
   load_and_authorize_resource except: :create
   before_action :contest_not_running, only: [:new, :create, :update, :edit]
@@ -19,6 +21,9 @@ class Problem::SubmissionsController < ApplicationController
 
   def create
     @submission = current_user.submissions.build(new_submission_params)
+    if Submission.is_problem_solved(@submission)
+      redirect_to :back, notice: "Problem already solved" and return
+    end
     authorize! :create, @submission
     if @submission.save
       reference = @submission.id.to_s + @submission.problem_id.to_s + 'new'
@@ -39,8 +44,11 @@ class Problem::SubmissionsController < ApplicationController
   end
 
   def update
-    if @submission.update(update_submission_params) && @submission.update(reference: current_user.id)
-      redirect_to submissions_path, notice: "Rejudge complete"
+    already_solved = Submission.is_problem_solved(@submission)
+    if already_solved && (Submission.results[update_submission_params[:result]] == Submission.results[:AC])
+      redirect_to edit_submission_path(@submission), notice: "Problem already solved" and return
+    elsif Judging.judge(@submission, Submission.results[update_submission_params[:result]])
+      redirect_to submissions_path, notice: "Rejudge complete" and return
     else
       render :edit, notice: "There is some problem to rejudge"
     end
