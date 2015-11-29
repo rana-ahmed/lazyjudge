@@ -13,6 +13,7 @@
                       <th style="width:150px">Team</th>
                       <% end %>
                       <th>Problem name</th>
+                      <th></th>
                       <th style="width:200px">Result</th>
                       <% if current_user.judge? %>
                       <th></th>
@@ -28,7 +29,8 @@
                     <% if !@show_id %>
                     <td><%= submission.user.user_name %></td>
                     <% end %>
-                    <td><%= submission.problem. title %></td>
+                    <td><%= submission.problem.title %></td>
+                    <td> <%= time_ago_in_words submission.created_at %> ago </td>
                     <td><%= submission.result %></td>
                     <% if can? :update, submission %>
                       <td><strong><%= link_to 'Rejudge', edit_submission_path(submission)%></strong></td>

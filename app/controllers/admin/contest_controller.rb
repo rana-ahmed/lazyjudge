@@ -53,6 +53,6 @@ class Admin::ContestController < ApplicationController
     @problem_info = Hash.new
     @problem_info[:problem_number] = Problem.count
     @problem_info[:clarification_number] = Clarification.count
-    @problem_info[:submission_number] = "future"
+    @problem_info[:submission_number] = Submission.count
   end
 end

@@ -3,14 +3,14 @@ class Problem::SubmissionsController < ApplicationController
 
   before_filter :login_required
   load_and_authorize_resource except: :create
-  before_action :contest_not_running, only: [:new, :create, :update, :edit]
+  before_action :contest_not_running, only: [:new, :create]
 
   def index
     if params[:ref] == "my_submission"
-      @submissions = Submission.where(user_id: current_user.id)
+      @submissions = Submission.where(user_id: current_user.id).order("created_at DESC")
       @show_id = true
     else
-      @submissions = Submission.all
+      @submissions = Submission.all.order("created_at DESC")
     end
 
   end
@@ -30,7 +30,7 @@ class Problem::SubmissionsController < ApplicationController
       @submission.reference = Digest::MD5.hexdigest(reference)
       if @submission.save
         #making the http request to server
-        redirect_to submissions_path, notice: "Problem submitted"
+        redirect_to submissions_path(ref: "my_submission"), notice: "Problem submitted"
       else
         redirect_to :back, notice: "Server has some internal problem"
       end
