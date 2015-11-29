@@ -4,6 +4,6 @@ class HomeController < ApplicationController
   end
 
   def score_board
-
+    @score = Submission.score_board
   end
 end

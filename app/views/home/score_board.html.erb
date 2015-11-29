@@ -15,34 +15,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>3Coders</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>500</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Hello</td>
-                    <td>3</td>
-                    <td>5</td>
-                    <td>450</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Rooki</td>
-                    <td>1</td>
-                    <td>3</td>
-                    <td>300</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>CSE-152</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>40</td>
-                </tr>
+                <% rank = 0 %>
+                <% @score.each do |board| %>
+                    <tr>
+                        <td> <%= rank += 1 %> </td>
+                        <td> <%= board["user_name"] %> </td>
+                        <td> <%= board["solved_problem"] %> </td>
+                        <td> <%= board["tried_problem"] %> </td>
+                        <td> <%= board["point"] %> </td>
+                    </tr>
+                <% end %>
             </tbody>
         </table>
     </div>
