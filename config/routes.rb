@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :problems, controller: 'problem/problems'
   resources :submissions, controller: 'problem/submissions', except: :show
-  resources :clarifications, controller: 'problem/clarifications', except: [:show, :destroy]
+  resources :clarifications, controller: 'problem/clarifications', except: [:show]
 
   namespace :admin do
     resources :users, only: [:index, :create, :destroy]
