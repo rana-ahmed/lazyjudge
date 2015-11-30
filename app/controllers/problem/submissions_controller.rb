@@ -47,7 +47,7 @@ class Problem::SubmissionsController < ApplicationController
     already_solved = Submission.is_problem_solved(@submission)
     if already_solved && (Submission.results[update_submission_params[:result]] == Submission.results[:AC])
       redirect_to edit_submission_path(@submission), notice: "Problem already solved" and return
-    elsif Judging.judge(@submission, Submission.results[update_submission_params[:result]])
+    elsif Submission.judge(@submission, Submission.results[update_submission_params[:result]])
       redirect_to submissions_path, notice: "Rejudge complete" and return
     else
       render :edit, notice: "There is some problem to rejudge"
@@ -61,11 +61,5 @@ class Problem::SubmissionsController < ApplicationController
 
   def update_submission_params
     params.require(:submission).permit(:result)
-  end
-
-  def contest_not_running
-    if Setting.contest_running.nil?
-      redirect_to :back, notice: "Contest is not running"
-    end
   end
 end

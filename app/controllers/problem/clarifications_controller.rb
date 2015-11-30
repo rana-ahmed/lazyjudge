@@ -1,6 +1,7 @@
 class Problem::ClarificationsController < ApplicationController
   before_filter :login_required
   before_action :set_clarification, only: [:destroy, :edit, :update]
+  before_action :contest_not_running, only: [:new]
   load_and_authorize_resource except: :create
 
   def index

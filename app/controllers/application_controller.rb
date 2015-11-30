@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
   def login_required
     redirect_to root_path if current_user.nil?
   end
+
+  def contest_not_running
+    redirect_to :back, notice: "Contest is not running" if Setting.contest_running.nil?
+  end
 end
