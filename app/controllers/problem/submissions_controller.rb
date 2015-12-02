@@ -1,5 +1,5 @@
 class Problem::SubmissionsController < ApplicationController
-  require "#{Rails.root}/lib/judging"
+  require 'net/http'
 
   before_filter :login_required
   load_and_authorize_resource except: :create
@@ -29,7 +29,18 @@ class Problem::SubmissionsController < ApplicationController
       reference = @submission.id.to_s + @submission.problem_id.to_s + 'new'
       @submission.reference = Digest::MD5.hexdigest(reference)
       if @submission.save
-        #making the http request to server
+        problem = @submission.problem
+        uri = URI(get_uri(@submission))
+        req = Net::HTTP::Post.new(uri, initheader = {'Content-Type' =>'application/json'})
+        req.body = {submission_id: @submission.reference,
+                    time_limit: problem.time_limit,
+                    source_code: @submission.code,
+                    input: problem.judge_input,
+                    answar: problem.judge_output
+                  }.to_json
+        Net::HTTP.start(uri.hostname, uri.port) do |http|
+          http.request(req)
+        end
         redirect_to submissions_path(ref: "my_submission"), notice: "Problem submitted"
       else
         redirect_to :back, notice: "Server has some internal problem"
@@ -61,5 +72,13 @@ class Problem::SubmissionsController < ApplicationController
 
   def update_submission_params
     params.require(:submission).permit(:result)
+  end
+
+  def get_uri(submission)
+    if submission.language == "C"
+      return Setting.contest_c_com
+    elsif submission.language == "CPP"
+      return Setting.contest_cpp_com
+    end
   end
 end
