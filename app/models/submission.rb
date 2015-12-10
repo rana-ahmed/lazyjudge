@@ -26,7 +26,7 @@ class Submission < ActiveRecord::Base
 
   def self.calculate_point(submission, solved)
     penalty_time = (Submission.where("user_id = ? AND problem_id = ? AND id < ?",submission.user_id, submission.problem_id, submission.id).count) * 20
-    point = ((solved.updated_at - Setting.contest_timer_start) / 60).to_i + penalty_time
+    point = ((solved.created_at - Setting.contest_timer_start) / 60).to_i + penalty_time
     solved.update(point: point)
   end
 
