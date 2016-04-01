@@ -18,4 +18,6 @@
 //= require moment-timezone/builds/moment-timezone-with-data
 //= require bootstrap-wysihtml5
 //= require clipboard/dist/clipboard
+//= require toastr/toastr
+//= require private_pub
 //= require_tree .

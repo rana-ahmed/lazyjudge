@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LezyJudge <%= yield(:title) || 'LezyJudge' %></title>
+  <title>LezyJudge <%= yield(:title) || 'LazyJudge' %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-  <%= render 'layouts/nav/visitor_nav' if !current_user %>
   <% if current_user %>
     <%= render 'layouts/nav/team_nav' if current_user.team? %>
     <%= render 'layouts/nav/judge_nav' if current_user.judge? %>
     <%= render 'layouts/nav/admin_nav' if current_user.admin? %>
+  <% else %>
+    <%= render 'layouts/nav/visitor_nav' %>
   <% end %>
 
   <% if flash[:notice] %>

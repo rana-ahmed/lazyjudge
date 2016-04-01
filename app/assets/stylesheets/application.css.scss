@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  *= require bootstrap-wysihtml5
+ *= require toastr/toastr
  */
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap";

@@ -16,6 +16,7 @@ class Problem::ClarificationsController < ApplicationController
     @clarification = current_user.clarifications.build(new_clarification_params)
     authorize! :create, @clarification
     if @clarification.save
+      PrivatePub.publish_to "/judge/notify", :notification => "New clarification asked"
       redirect_to clarifications_path, notice: "Clarification submitted"
     else
       render :new
@@ -28,6 +29,7 @@ class Problem::ClarificationsController < ApplicationController
 
   def update
     if @clarification.update(update_clarification_params)
+      PrivatePub.publish_to "/team/notify", :notification => "Clarification answered!"
       redirect_to clarifications_path, notice: "Question answered"
     else
       render :edit
